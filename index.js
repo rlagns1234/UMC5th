@@ -1,6 +1,8 @@
 import express from 'express';
 import { response } from './config/response.js';
 import { tempRouter } from './src/routes/temp.route.js';
+import { userRouter } from './src/routes/user.route.js';
+import { storeRouter } from './src/routes/store.route.js';
 import { BaseError } from './config/error.js';
 import { status } from './config/response.status.js';
 
@@ -16,6 +18,8 @@ app.use(express.urlencoded({extended: false}));
 
 // router setting
 app.use('/temp', tempRouter);
+app.use('/user', userRouter);
+app.use('/:storeId', storeRouter);
 
 // error handling
 app.use((req, res, next) => {
